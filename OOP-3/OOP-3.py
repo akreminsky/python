@@ -52,8 +52,7 @@ class WiredPhone(Phone):
         self.__is_on_line = True
 
 
-
-class App():
+class App:
     def __init__(self, is_on, battery_per_minute, need_internet):
         self.__battery_per_minute = battery_per_minute
         self.__need_internet = need_internet
@@ -99,7 +98,3 @@ class Ebook(App):
 
     def disable_night_mode(self):
         self.__is_night_mode = False
-
-
-
-
