@@ -51,3 +51,55 @@ class WiredPhone(Phone):
         self.__cable_length = cable_length
         self.__is_on_line = True
 
+
+
+class App():
+    def __init__(self, is_on, battery_per_minute, need_internet):
+        self.__battery_per_minute = battery_per_minute
+        self.__need_internet = need_internet
+        self.__is_on = is_on
+
+    def run(self):
+        self.__is_on = True
+
+    def stop(self):
+        self.__is_on = False
+
+
+class Alarm(App):
+    def __init__(self, on, b, i, time, melody):
+        super().__init__(on, b, i)
+        self.__time = time
+        self.__melody = melody
+
+    def set_up(self, time, melody):
+        self.__is_on = True
+        self.__time = time
+        self.__melody = melody
+
+    def snooze(self):
+        self.__time += 10
+
+
+class Ebook(App):
+    def __init__(self, on, b, i, book_opened, font_size, is_night_mode):
+        super().__init__(on, b, i)
+        self.__book_opened = book_opened
+        self.__font_size = font_size
+        self.__is_night_mode = is_night_mode
+
+    def open_book(self, book):
+        self.__book_opened(book)
+
+    def change_font_size(self, size):
+        self.__font_size = size
+
+    def enable_night_mode(self):
+        self.__is_night_mode = True
+
+    def disable_night_mode(self):
+        self.__is_night_mode = False
+
+
+
+
