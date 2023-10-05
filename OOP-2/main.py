@@ -40,6 +40,7 @@ class HSPlayer:
         self.is_online = online_status
 
     def update_rating(self, rating_update, is_increase):
+        self.games_played_count += 1
         if is_increase:
             self.rating += rating_update
         else:
@@ -47,3 +48,20 @@ class HSPlayer:
 
     def ban(self):
         self.is_active = False
+
+
+deathwing = HSCards(12, 12, False, False, False, 0, False, False, True)
+deathwing.card_hit(10)
+print(deathwing.health)
+print(deathwing.is_alive)
+deathwing.card_hit(12)
+print(deathwing.health)
+print(deathwing.is_alive)
+
+player00000111111 = HSPlayer("DESCTRUCTOR0000000", 0, 0, [], True, True)
+print(player00000111111.games_played_count, player00000111111.rating)
+player00000111111.update_rating(100, True)
+print(player00000111111.games_played_count, player00000111111.rating)
+print(player00000111111.is_active)
+player00000111111.ban()
+print(player00000111111.is_active)
