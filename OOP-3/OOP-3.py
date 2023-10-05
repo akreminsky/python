@@ -31,6 +31,10 @@ class Smartphone(Phone):
     def take_photo(self, photo_size):
         self.__memory_left -= photo_size
 
+    def battery_state(self, left_percents):
+        if left_percents < 0:
+            self.__is_on_line = False
+
 
 class WiredPhone(Phone):
     def __init__(self, m, ol, ti, cable_length, numbers_keyboard_type):
@@ -46,3 +50,4 @@ class WiredPhone(Phone):
     def fix_cable(self, cable_length):
         self.__cable_length = cable_length
         self.__is_on_line = True
+
