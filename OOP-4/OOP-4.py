@@ -1,5 +1,6 @@
 import random
 
+
 class Phone:
     def __init__(self, manufacturer, is_on_line, has_technical_issues):
         self.__manufacturer = manufacturer
@@ -82,8 +83,8 @@ class App:
 
 
 class Alarm(App):
-    def __init__(self, on, b, i, time, melody):
-        super().__init__(on, b, i)
+    def __init__(self, on, b, i_, time, melody):
+        super().__init__(on, b, i_)
         self.__time = time
         self.__melody = melody
 
@@ -94,6 +95,8 @@ class Alarm(App):
 
     def snooze(self):
         self.__time += 10
+
+
 # Пример эд хок полиморфизма (не работает в Python, насколько я понял) - можно просто автоматически передвинуть
 # будильник на 10 минут, а можно указать, на сколько минут тебе будильник передвинуть.
 # def snooze(self, minutes):
@@ -101,8 +104,8 @@ class Alarm(App):
 
 
 class Ebook(App):
-    def __init__(self, on, b, i, book_opened, font_size, is_night_mode):
-        super().__init__(on, b, i)
+    def __init__(self, on, b, i_, book_opened, font_size, is_night_mode):
+        super().__init__(on, b, i_)
         self.__book_opened = book_opened
         self.__font_size = font_size
         self.__is_night_mode = is_night_mode
@@ -125,7 +128,7 @@ for i in range(500):
     random_int = random.randint(0, 9)
     if random_int > 4:
         phone = Smartphone("Nokia", True, False, "Android", "sensor", True, 256000000, True, 0.1,
-                                False, "9:00", "Bing")
+                           False, "9:00", "Bing")
     else:
         phone = WiredPhone("Nokia", True, False, 3, "round")
     objects.append(phone)
