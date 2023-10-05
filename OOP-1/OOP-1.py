@@ -9,18 +9,11 @@ class HSCards:
 
 
 class HSPlayer:
-    nickname = "Nick"
+    nickname = ""
     games_played_count = 23141
     rating = 5000
-    games_playes = []
-
-
-class HSGameHand:
-    turn = 0
-    player = HSPlayer()
-    cards_count = 0
-    cards = []
-    is_cursed = False
+    games_played = []
+    is_online = False
 
 
 class HSGameEvents:
@@ -28,3 +21,32 @@ class HSGameEvents:
     players = [HSPlayer(), HSPlayer()]
     card = HSCards()
     card_target = None
+
+
+deathwing = HSCards()
+deathwing.attack = 8
+deathwing.health = 8
+
+grommash = HSCards()
+grommash.attack = 4
+grommash.health = 10
+grommash.charge = True
+
+nick = HSPlayer()
+nick.nickname = "Nick"
+
+kevin = HSPlayer()
+kevin.nickname = "Kevin"
+
+kevin_nick_gh3r2f4hdddj3 = HSGameEvents()
+kevin_nick_gh3r2f4hdddj3.card = deathwing
+kevin_nick_gh3r2f4hdddj3.turn = 1
+kevin_nick_gh3r2f4hdddj3.players = [kevin, nick]
+kevin_nick_gh3r2f4hdddj3.card_target = grommash
+
+print(vars(kevin), vars(nick), vars(kevin_nick_gh3r2f4hdddj3), vars(grommash), vars(deathwing))
+
+destructor5000 = nick
+destructor5000.nickname = "DESTROYER OF THE WORLDS"
+
+print(nick.nickname)
