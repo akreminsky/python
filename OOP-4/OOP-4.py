@@ -1,8 +1,14 @@
+import random
+
 class Phone:
     def __init__(self, manufacturer, is_on_line, has_technical_issues):
         self.__manufacturer = manufacturer
         self.__is_on_line = is_on_line
         self.__has_technical_issues = has_technical_issues
+
+    def some_off_method(self):
+        self.__is_on_line = False
+        print("Our phone is parent")
 
     def fix_technical_issues(self):
         self.__has_technical_issues = True
@@ -16,12 +22,18 @@ class Phone:
 
 
 class Smartphone(Phone):
-    def __init__(self, m, ol, ti, os, screen_type, sim, memory_left):
+    def __init__(self, m, ol, ti, os, screen_type, sim, memory_left, app_is_on, app_battery_per_minute,
+                 app_internet_needs, alarm_time, alarm_melody):
         super().__init__(m, ol, ti)
         self.__os = os
         self.__screen_type = screen_type
         self.__sim = sim
         self.__memory_left = memory_left
+        self.__apps_installed = Alarm(app_is_on, app_battery_per_minute, app_internet_needs, alarm_time, alarm_melody)
+
+    def some_off_method(self):
+        self.__is_on_line = False
+        print("Our phone is smartphone")
 
     def pull_sim_out(self):
         self.__sim = None
@@ -41,6 +53,10 @@ class WiredPhone(Phone):
         super().__init__(m, ol, ti)
         self.__cable_length = cable_length
         self.__numbers_keyboard_type = numbers_keyboard_type
+
+    def some_off_method(self):
+        self.__is_on_line = False
+        print("Our phone is wired phone")
 
     def cut_cable(self):
         self.__cable_length = None
@@ -98,3 +114,17 @@ class Ebook(App):
 
     def disable_night_mode(self):
         self.__is_night_mode = False
+
+
+objects = []
+for i in range(500):
+    random_int = random.randint(0, 9)
+    if random_int > 4:
+        phone = Smartphone("Nokia", True, False, "Android", "sensor", True, 256000000, True, 0.1,
+                                False, "9:00", "Bing")
+    else:
+        phone = WiredPhone("Nokia", True, False, 3, "round")
+    objects.append(phone)
+
+for i in objects:
+    i.some_off_method()
