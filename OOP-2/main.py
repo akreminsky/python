@@ -53,10 +53,10 @@ class HSPlayer:
 deathwing = HSCards(12, 12, False, False, False, 0, False, False, True)
 deathwing.card_hit(10)
 print(deathwing.health)
-print(deathwing.is_alive)
+assert deathwing.is_alive
 deathwing.card_hit(12)
 print(deathwing.health)
-print(deathwing.is_alive)
+assert not deathwing.is_alive
 
 player00000111111 = HSPlayer("DESCTRUCTOR0000000", 0, 0, [], True, True)
 print(player00000111111.games_played_count, player00000111111.rating)
