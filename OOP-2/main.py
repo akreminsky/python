@@ -1,3 +1,5 @@
+import logging
+
 class HSCards:
 
     def __init__(self, attack, health, deathrattle, charge, battlecry, buffs_attack_to_all, is_poison, is_immune,
@@ -11,13 +13,17 @@ class HSCards:
         self.is_poison = is_poison
         self.is_immune = is_immune
         self.is_alive = is_alive
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.WARNING)
 
     def card_hit(self, opponents_attack):
         if self.is_alive:
             if not self.is_immune:
                 self.health -= opponents_attack
+                self.logger.warning("Здоровье карты уменьшено")
             if self.health <= 0:
                 self.is_alive = False
+                self.logger.warning("Карта убита")
 
     def gain_charge(self):
         self.charge = True
