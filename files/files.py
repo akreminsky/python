@@ -37,3 +37,4 @@ def type_maker(file_name):
         for i in file:
             args = i.split(" ")
             _ = Type(args[0], args[1], args[2])
+# TODO  тесты и обработка ошибок
