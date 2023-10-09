@@ -14,10 +14,10 @@ def sum_files(one, two):
     sum_var = 0
     with open(f'{one}.txt') as file:
         for s in file:
-            sum_var += s.rstrip()
+            sum_var += int(s.rstrip())
     with open(f'{two}.txt') as file:
         for s in file:
-            sum_var += s.rstrip()
-
+            sum_var += int(s.rstrip())
 
 files_creator()
+sum_files(random.randint(1, 10), random.randint(1, 10))
