@@ -1,3 +1,4 @@
+import logging
 import os
 import random
 
@@ -17,19 +18,23 @@ def files_creator():
                     file.write(f'{random.randint(0, 10)} \n')
 
 
-def sum_files(one, two):
+def sum_files_six_nums(one, two):
     sum_var = 0
-    with open(f'{one}.txt') as file:
-        for s in file:
-            sum_var += int(s.rstrip())
-    with open(f'{two}.txt') as file:
-        for s in file:
-            sum_var += int(s.rstrip())
+
+    try:
+        with open(f'{one}.txt') as file:
+            for s in file:
+                sum_var += int(s.rstrip())
+        with open(f'{two}.txt') as file:
+            for s in file:
+                sum_var += int(s.rstrip())
+    except TypeError as e:
+        logging.warning(f'Произошла ошибка! {e}')
 
 
 files_creator()
-sum_files(random.randint(1, 10), random.randint(1, 10))
-sum_files(1, 2)
+sum_files_six_nums(random.randint(1, 10), random.randint(1, 10))
+sum_files_six_nums(1, 2)
 
 
 def type_maker(file_name):
@@ -37,4 +42,3 @@ def type_maker(file_name):
         for i in file:
             args = i.split(" ")
             _ = Type(args[0], args[1], args[2])
-# TODO  тесты и обработка ошибок
