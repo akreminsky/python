@@ -1,25 +1,6 @@
 import os
 from glob import glob
 
-# print(os.getcwd()+"/test.py")
-
-# print(os.path.exists(os.getcwd()))
-
-if not os.path.exists('level1'):
-    os.makedirs(os.path.join('level1', 'level2', 'level3'))
-
-
-# print(os.listdir())
-
-# print(glob(os.path.join('*.py')))
-
-
-# for root, dirs, files in os.walk('.'):
-#    print(root)
-#    print(dirs)
-#    print(files)
-
-# print(os.listdir(os.path.join(os.getcwd(), next(os.walk(os.getcwd()))[1][1])))
 
 def find_all_files_by_ext(dir, ext, flag):
     files = []
@@ -40,8 +21,6 @@ def find_all_files_by_ext(dir, ext, flag):
     return files
 
 
-# print(find_all_files_by_ext(os.getcwd(), '.txt', True))
-
 def find_all_dirs(dir, flag):
     for _, dirs, _ in os.walk(dir):
         result = []
@@ -51,9 +30,13 @@ def find_all_dirs(dir, flag):
                 for _, dirs_level, _ in os.walk(subdir):
                     for i in dirs_level:
                         result.append(i)
-                break
+                    break
             return result
-        return result
+        return dirs
 
 
-print(find_all_dirs(os.getcwd(), True))
+def return_dirs_and_files(dir, ext, flag):
+    return [find_all_files_by_ext(dir, ext, flag), find_all_dirs(dir, flag)]
+
+
+print(return_dirs_and_files(os.getcwd(), '.py', True))
