@@ -10,23 +10,17 @@ class SortTests(unittest.TestCase):
         self.assertEqual(sort_arr([0, 1, 2, 3, 0, 1, 2, 0]), [0, 0, 0, 1, 1, 2, 2, 3])
 
     def test_random(self):
-        for i in range(100000):
+        for _ in range(100000):
             x = randint(-25, +25)
             y = randint(-25, +25)
             j = randint(-25, +25)
             p = randint(-25, +25)
-            rand_array = [x, y, j, p]
-            rand_array_sorted = sort_arr(rand_array)
-
-            for j in range(len(rand_array_sorted)):
-                if j < len(rand_array_sorted) - 1:
-                    self.assertTrue(rand_array_sorted[j] <= rand_array_sorted[j + 1])
+            self.assertEqual(sort_arr([x, y, j, p]), sorted([x, y, j, p]))
 
     def test_massive(self):
-        test_list = sort_arr([i * -1 for i in range(3000)])
-        for i in range(len(test_list)):
-            if i < len(test_list) - 1:
-                self.assertTrue(test_list[i] <= test_list[i + 1])
+        test_array = [i * -1 for i in range(3000)]
+        self.assertEqual(sort_arr(test_array), sorted(test_array))
+
 
     def test_null(self):
         test_1 = []
