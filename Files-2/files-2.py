@@ -40,9 +40,6 @@ def return_dirs_and_files(dir, ext, flag):
     return [find_all_files_by_ext(dir, ext, flag), find_all_dirs(dir, flag)]
 
 
-# print(return_dirs_and_files(os.getcwd(), '.py', True))
-
-
 def delete_s(dir):
     for _, dirs, _ in os.walk(dir):
         if dirs == []:

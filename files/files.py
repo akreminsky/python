@@ -1,4 +1,3 @@
-import logging
 import os
 import random
 
@@ -18,23 +17,37 @@ def files_creator():
                     file.write(f'{random.randint(0, 10)} \n')
 
 
-def sum_files_six_nums(one, two):
+def sum_files_six_nums(one: str, two: str):
     sum_var = 0
-
     try:
-        with open(f'{one}.txt') as file:
-            for s in file:
-                sum_var += int(s.rstrip())
-        with open(f'{two}.txt') as file:
-            for s in file:
-                sum_var += int(s.rstrip())
+        with open(one, "r") as file:
+            lines = sum(1 for line in file if line.rstrip())
+        with open(one, "r") as file:
+            if lines == 3:
+                for s in file:
+                    sum_var += int(s.rstrip())
+            else:
+                return f'File {one} contains more or less than 3 lines with integers to add'
+        with open(two, "r") as file:
+            lines_2 = sum(1 for line in file if line.rstrip())
+        with open(two, "r") as file:
+            if lines_2 == 3:
+                for s in file:
+                    sum_var += int(s.rstrip())
+            else:
+                return f'File {two} contains more or less than 3 lines with integers to add'
+        return sum_var
     except TypeError as e:
-        logging.warning(f'Произошла ошибка! {e}')
+        return f'{e}'
+    except ValueError as e:
+        return f'{e}'
+    except FileNotFoundError as e:
+        return f'{e}'
 
 
-files_creator()
-sum_files_six_nums(random.randint(1, 10), random.randint(1, 10))
-sum_files_six_nums(1, 2)
+# files_creator()
+print(sum_files_six_nums(f'{random.randint(1, 10)}.txt', f'{random.randint(1, 10)}.txt'))
+print(sum_files_six_nums('1.txt', '2.txt'))
 
 
 def type_maker(file_name):
