@@ -1,5 +1,6 @@
 import os
 import random
+from typing import List
 
 
 class Type:
@@ -17,7 +18,7 @@ def files_creator():
                     file.write(f'{random.randint(0, 10)} \n')
 
 
-def sum_files_six_nums(one: str, two: str):
+def sum_files_six_nums(one: str, two: str) -> List[str]:
     sum_var = 0
     files_to_add = [one, two]
 
@@ -30,19 +31,19 @@ def sum_files_six_nums(one: str, two: str):
                     for s in file:
                         sum_var += int(s.rstrip())
                 else:
-                    return f'File {file_added} contains more or less than 3 lines with integers to add'
+                    return [0, f'File {file_added} contains more or less than 3 lines with integers to add']
         except TypeError as e:
-            return f'Error in file{file_added}:{e}'
+            return ['0', f'Error in file{file_added}:{e}']
         except ValueError as e:
-            return f'Error in file{file_added}:{e}'
+            return ['0', f'Error in file{file_added}:{e}']
         except FileNotFoundError as e:
-            return f'Error in file{file_added}:{e}'
-    return sum_var
+            return ['0', f'Error in file{file_added}:{e}']
+    return [str(sum_var), "Ok"]
 
 
-# files_creator()
+files_creator()
 # print(sum_files_six_nums(f'{random.randint(1, 10)}.txt', f'{random.randint(1, 10)}.txt'))
-# print(sum_files_six_nums('1.txt', '2.txt'))
+print(type(sum_files_six_nums('1.txt', '2.txt')[0]))
 
 
 def type_maker(file_name):
