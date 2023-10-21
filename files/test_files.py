@@ -14,7 +14,7 @@ class FilesTests(unittest.TestCase):
             file2.write("2\n")
             file2.write("6\n")
             file2.write("190\n")
-        self.assertTrue(sum_files_six_nums("new_file.txt", "new_file_1.txt")[0] == '215')
+        self.assertTrue(sum_files_six_nums("new_file.txt", "new_file_1.txt")[0] == 215)
 
     def test_empty_file(self):
         with open("new_file.txt", 'wt') as file1:
@@ -25,7 +25,7 @@ class FilesTests(unittest.TestCase):
             file2.write("\n")
         self.assertTrue(sum_files_six_nums("new_file.txt",
                                            "new_file_1.txt")[
-                            1] == "File new_file_1.txt contains more or less than 3 lines with integers to add")
+                            1] == 1)
 
     def test_string_line(self):
         with open("new_file.txt", 'wt') as file1:
@@ -36,4 +36,4 @@ class FilesTests(unittest.TestCase):
             file2.write("3\n")
             file2.write("2\n")
             file2.write("9\n")
-        self.assertTrue("invalid literal for int()" in sum_files_six_nums("new_file.txt", "new_file_1.txt")[1])
+        self.assertTrue(sum_files_six_nums("new_file.txt", "new_file_1.txt")[1] == 3)

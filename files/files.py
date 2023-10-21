@@ -18,7 +18,7 @@ def files_creator():
                     file.write(f'{random.randint(0, 10)} \n')
 
 
-def sum_files_six_nums(one: str, two: str) -> List[str]:
+def sum_files_six_nums(one: str, two: str) -> List[int]:
     sum_var = 0
     files_to_add = [one, two]
 
@@ -31,14 +31,14 @@ def sum_files_six_nums(one: str, two: str) -> List[str]:
                     for s in file:
                         sum_var += int(s.rstrip())
                 else:
-                    return [0, f'File {file_added} contains more or less than 3 lines with integers to add']
+                    return [0, 1]
         except TypeError as e:
-            return ['0', f'Error in file{file_added}:{e}']
+            return [0, 2]
         except ValueError as e:
-            return ['0', f'Error in file{file_added}:{e}']
+            return [0, 3]
         except FileNotFoundError as e:
-            return ['0', f'Error in file{file_added}:{e}']
-    return [str(sum_var), "Ok"]
+            return [0, 4]
+    return [sum_var, 0]
 
 
 files_creator()
