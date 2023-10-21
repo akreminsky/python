@@ -1,7 +1,8 @@
 import os
+from typing import List
 
 
-def find_all_files_by_ext(dir, ext, flag):
+def find_all_files_by_ext(dir: str, ext: str, flag: bool) -> List[str]:
     result = []
     for item in os.listdir(dir):
         if os.path.isfile(item):
@@ -19,7 +20,7 @@ def find_all_files_by_ext(dir, ext, flag):
     return result
 
 
-def find_all_dirs(dir, flag):
+def find_all_dirs(dir: str, flag: bool) -> List[str]:
     result = []
     for item in os.listdir(dir):
         if os.path.isdir(item):
@@ -33,11 +34,11 @@ def find_all_dirs(dir, flag):
     return result
 
 
-def return_dirs_and_files(dir, ext, flag):
+def return_dirs_and_files(dir: str, ext: str, flag: bool) -> List[List[str]]:
     return [find_all_files_by_ext(dir, ext, flag), find_all_dirs(dir, flag)]
 
 
-def delete_content(dir):
+def delete_content(dir: str) -> int:
     if not return_dirs_and_files(dir, "", False)[1]:
         for item in os.listdir(dir):
             os.remove(item)
