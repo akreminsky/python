@@ -32,10 +32,12 @@ def encounter_dict(arr: List[int], min_count: int) -> List[int]:
             enc_dict[i] = 1
             continue
         enc_dict[i] += 1
-        if enc_dict[i] > min_count:
+        if enc_dict[i] >= min_count:
             if i not in arr_with_min_counts:
                 arr_with_min_counts.append(i)
     return arr_with_min_counts
 
 print(list_gen())
 print(encounter_dict(list_gen(), 10))
+
+print(encounter_dict([0, 1, 2, 3, 0, 1, 2, 0], 2))
