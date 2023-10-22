@@ -26,8 +26,9 @@ def list_gen():
 def encounter_dict(arr):
     enc_dict = {}
     for i in arr:
-        enc_dict[i] = 0
-    for i in arr:
+        if enc_dict.get(i) is None:
+            enc_dict[i] = 1
+            continue
         enc_dict[i] += 1
     return enc_dict
 

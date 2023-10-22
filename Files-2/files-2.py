@@ -39,11 +39,11 @@ def return_dirs_and_files(dir: str, ext: str, flag: bool) -> List[List[str]]:
 
 
 def delete_content(dir: str) -> int:
-    if not return_dirs_and_files(dir, "", False)[1]:
-        for item in os.listdir(dir):
-            os.remove(item)
-        return 1
-    return 0
+    if find_all_dirs(dir, False) != []:
+        return 0
+    for item in os.listdir(dir):
+        os.remove(item)
+    return 1
 
 
 print(return_dirs_and_files(os.getcwd(), '.py', False))

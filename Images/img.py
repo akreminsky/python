@@ -12,7 +12,7 @@ def rect_drawer(image):
     return image
 
 
-def converter(ext_in, ext_out):
+def converter(ext_in: str, ext_out: str) -> None:
     for file in os.listdir(os.getcwd()):
         if file.endswith(ext_in):
             image = Image.open(file)
