@@ -1,6 +1,6 @@
 import random
 import string
-from typing import List
+from typing import List, Set
 
 dicts = {}
 arr = []
@@ -24,7 +24,7 @@ def list_gen():
     return [random.randint(1, 10) for i in range(100)]
 
 
-def encounter_dict(arr: List[int], min_count: int) -> List[int]:
+def encounter_dict(arr: List[int], min_count: int) -> Set[int]:
     enc_dict = {}
     arr_with_min_counts = []
     for i in arr:
@@ -33,9 +33,8 @@ def encounter_dict(arr: List[int], min_count: int) -> List[int]:
             continue
         enc_dict[i] += 1
         if enc_dict[i] >= min_count:
-            if i not in arr_with_min_counts:
-                arr_with_min_counts.append(i)
-    return arr_with_min_counts
+            arr_with_min_counts.append(i)
+    return set(arr_with_min_counts)
 
 print(list_gen())
 print(encounter_dict(list_gen(), 10))
